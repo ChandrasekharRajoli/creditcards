@@ -1,6 +1,5 @@
 package com.comparethemarket.creditcards.controller;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,7 +39,6 @@ public class CreditCardControllerTest {
     }
 
     @Test
-    @Disabled
     public void validAMEXCreditCard() {
         String url = "http://localhost:" + port + "/creditcard/378282246310005";
         String expected = "AMEX: 378282246310005 (valid)";

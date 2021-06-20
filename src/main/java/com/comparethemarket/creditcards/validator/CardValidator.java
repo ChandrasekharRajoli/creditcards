@@ -12,20 +12,15 @@ public class CardValidator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CardValidator.class);
 
-    public static void main(String[] args) {
-        String s = "5105 1051 0510 5106";
-
-        System.out.println(validateCreditCard(s));
-    }
-
     /**
      * Validates CreditCard using Luhn algorithm and returns the output
+     *
      * @param cardNumber
      * @return
      */
     public static String validateCreditCard(final String cardNumber) {
         boolean isValid = false;
-        String cardNum = cardNumber.replaceAll("\\s+","");
+        String cardNum = cardNumber.replaceAll("\\s+", "");
         CardType cardType = cardType(cardNum);
         if (CardType.UNKNOWN != cardType) {
             isValid = isValidCreditCardByLuhn(cardNum);
@@ -35,6 +30,7 @@ public class CardValidator {
 
     /**
      * CardType
+     *
      * @param cardNumber
      * @return
      */
@@ -48,6 +44,7 @@ public class CardValidator {
 
     /**
      * Validates CreditCard using Luhn algorithm
+     *
      * @param cardNumber
      * @return
      */
@@ -55,17 +52,14 @@ public class CardValidator {
         try {
             String[] cardNumberArray = cardNumber.split("");
             int sum = 0;
-            for (int i = 0; i < cardNumberArray.length; i++) {
+            for (int i = cardNumberArray.length - 1, k = 0; i >= 0; i--, k++) {
                 int digit = Integer.valueOf(cardNumberArray[i]);
-                int product;
-                if (i % 2 != 0) {
-                    product = digit;
-                } else {
-                    product = digit * 2;
+                if (k % 2 != 0) {
+                    digit *= 2;
                 }
-                if (product > 9)
-                    product -= 9;
-                sum += product;
+                if (digit > 9)
+                    digit -= 9;
+                sum += digit;
             }
             return (sum % 10 == 0);
         } catch (Exception exe) {
