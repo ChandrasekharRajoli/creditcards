@@ -9,11 +9,10 @@ CreditCard Controller that validates CreditCard using Luhn algorithm and returns
 
 cardNo - is the Credit Card number
 
-### How to run
-Please execute the below commanand to start the server
+### How to run - Please execute the below commanand to start the server:
     gradlew bootRun
 
-After successfull startup, please open the below URL
+* After successfull startup, please open the below URL:
     http://localhost:8080/creditcard/4111111111111111
 
 ### Test Data
